@@ -1,0 +1,17 @@
+<h1>My Tasks</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+  <li class="list-inline">
+    <% if task.completed? %>
+      ✅
+    <% else %>
+      🟩
+    <% end %>
+    <%= link_to task.title, task_path(task) %>
+    <%= link_to '💣', task_path(task), method: :delete, data: { confirm: 'Delete ' + task.title + '?' }%>
+  </li>
+  <% end %>
+</ul>
+<hr>
+<p><%= link_to 'Add a new Task', tasks_new_path, class: "btn btn-primary" %></p>
